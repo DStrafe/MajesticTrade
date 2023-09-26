@@ -1,6 +1,5 @@
 import { NestFactory } from '@nestjs/core';
 import { VersioningType } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 import { IoAdapter } from '@nestjs/platform-socket.io';
 import fastifyHelmet from '@fastify/helmet';
