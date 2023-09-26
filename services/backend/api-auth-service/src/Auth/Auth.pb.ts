@@ -27,7 +27,7 @@ export interface SingInRequest {
   env: string;
 }
 
-export const AUTH_PACKAGE_NAME:string = 'Auth';
+export const AUTH_PACKAGE_NAME:string = "Auth";
 
 export interface AuthorizationClient {
   signUp(request: RegisterDto, metadata?: Metadata): Observable<UserAuthDto>;
@@ -70,4 +70,4 @@ export function AuthorizationControllerMethods() {
   };
 }
 
-export const AUTHORIZATION_SERVICE_NAME = 'Auth';
+export const AUTHORIZATION_SERVICE_NAME = "Auth";
