@@ -6,8 +6,8 @@ export const grpcAuthOptions = {
   name: AUTHORIZATION_SERVICE_NAME,
   transport: Transport.GRPC,
   options: {
-    url: process.env.GRPC_AUTH_SERVICE_HOST || '127.0.0.1:50051',
-    package: [AUTH_PACKAGE_NAME],
+    url: '0.0.0.0:50051',
+    package: ['Auth'],
     protoPath: [
       resolve(__dirname, '../_proto/Auth/Auth.proto'),
     ],
