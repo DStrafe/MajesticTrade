@@ -1,10 +1,10 @@
 /* eslint-disable */
-import { Metadata } from "@grpc/grpc-js";
-import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
-import { Observable } from "rxjs";
+import { Metadata } from '@grpc/grpc-js';
+import { GrpcMethod, GrpcStreamMethod } from '@nestjs/microservices';
+import { Observable } from 'rxjs';
 import { LoginDto, RegisterDto, UserAuthDto } from './dto/auth.dto';
 
-export const protobufPackage = "auth";
+export const protobufPackage: string = 'Authorization';
 
 export interface Environment {
   env: string;
@@ -27,7 +27,7 @@ export interface SingInRequest {
   env: string;
 }
 
-export const AUTH_PACKAGE_NAME:string = 'Auth';
+export const AUTH_PACKAGE_NAME: string = 'Authorization';
 
 export interface AuthorizationClient {
   signUp(request: RegisterDto, metadata?: Metadata): Observable<UserAuthDto>;
@@ -37,7 +37,6 @@ export interface AuthorizationClient {
   refresh(request: string, metadata?: Metadata): Observable<string | never>;
 
   hello(RegisterDto: RegisterDto): Observable<string>;
-
 }
 
 export interface AuthorizationController {
@@ -60,19 +59,19 @@ export interface AuthorizationController {
 }
 
 export function AuthorizationControllerMethods() {
-  return function (constructor: Function) {
-    const grpcMethods: string[] = ["signUp", "signIn", "refresh", "hello"];
+  return function(constructor: Function) {
+    const grpcMethods: string[] = ['signUp', 'signIn', 'refresh', 'hello'];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
-      GrpcMethod("Authorization", method)(constructor.prototype[method], method, descriptor);
+      GrpcMethod('Authorization', method)(constructor.prototype[method], method, descriptor);
     }
 
     const grpcStreamMethods: string[] = [];
     for (const method of grpcStreamMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
-      GrpcStreamMethod("Authorization", method)(constructor.prototype[method], method, descriptor);
+      GrpcStreamMethod('Authorization', method)(constructor.prototype[method], method, descriptor);
     }
   };
 }
 
-export const AUTHORIZATION_SERVICE_NAME = 'Authorization';
+export const AUTHORIZATION_SERVICE_NAME: string = 'AuthorizationService';
