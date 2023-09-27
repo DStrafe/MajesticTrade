@@ -21,7 +21,7 @@ export class RpcExceptionFilter implements ExceptionFilter {
       message =
         exception.details ||
         JSON.parse(exception.message.split(':').slice(1).join(':')).message;
-    } catch {
+    } catch(e) {
       status = exception.getStatus();
       message = exception.response?.message || exception.message;
     }

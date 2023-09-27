@@ -9,8 +9,12 @@ import { AuthService } from './Auth.service';
 @UseFilters(RpcExceptionFilter)
 export class AuthController {
   constructor(private authService: AuthService) {}
+  @Post('hello')
+  async helloWorld (@Body() RegisterDto:RegisterDto,) {
+    return this.authService.hello(RegisterDto)
+  }
 
-  @Post('/signUp')
+  @Post('signUp')
   async singUp(
     @Body() RegisterDto:RegisterDto,
   ): Promise<UserAuthDto> {

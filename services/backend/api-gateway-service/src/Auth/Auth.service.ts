@@ -15,13 +15,21 @@ export class AuthService implements OnModuleInit {
   private readonly grpcAuthClient: ClientGrpc;
 
   public onModuleInit(): void {
+    console.log(this.grpcAuthClient.getClientByServiceName<AuthorizationClient>(
+      AUTHORIZATION_SERVICE_NAME,
+    ))
     this.svc = this.grpcAuthClient.getService<AuthorizationClient>(
       AUTHORIZATION_SERVICE_NAME,
     );
   }
 
-  public signUp(environment: RegisterDto): Promise<UserAuthDto> {
-    return firstValueFrom(this.svc.signUp(environment));
+  public async hello(RegisterDto: RegisterDto): Promise<string> {
+    console.log(this.svc)
+    return firstValueFrom(this.svc.hello(RegisterDto));
+  }
+
+  public signUp(RegisterDto: RegisterDto): Promise<UserAuthDto> {
+    return firstValueFrom(this.svc.signUp(RegisterDto));
   }
 
   public signIn(singInResponse: LoginDto): Promise<string> {

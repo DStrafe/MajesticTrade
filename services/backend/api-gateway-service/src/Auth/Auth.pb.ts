@@ -35,6 +35,9 @@ export interface AuthorizationClient {
   signIn(request: LoginDto, metadata?: Metadata): Observable<string | never>;
 
   refresh(request: string, metadata?: Metadata): Observable<string | never>;
+
+  hello(RegisterDto: RegisterDto): Observable<string>;
+
 }
 
 export interface AuthorizationController {
@@ -52,22 +55,24 @@ export interface AuthorizationController {
     request: AuthorizationToken,
     metadata?: Metadata,
   ): Promise<VerifyResponse> | Observable<VerifyResponse> | VerifyResponse;
+
+  hello(RegisterDto: RegisterDto): Observable<string>;
 }
 
 export function AuthorizationControllerMethods() {
   return function (constructor: Function) {
-    const grpcMethods: string[] = ["signUp", "signIn", "refresh"];
+    const grpcMethods: string[] = ["signUp", "signIn", "refresh", "hello"];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
       GrpcMethod("Authorization", method)(constructor.prototype[method], method, descriptor);
     }
 
-    // const grpcStreamMethods: string[] = [];
-    // for (const method of grpcStreamMethods) {
-    //   const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
-    //   GrpcStreamMethod("Authorization", method)(constructor.prototype[method], method, descriptor);
-    // }
+    const grpcStreamMethods: string[] = [];
+    for (const method of grpcStreamMethods) {
+      const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
+      GrpcStreamMethod("Authorization", method)(constructor.prototype[method], method, descriptor);
+    }
   };
 }
 
-export const AUTHORIZATION_SERVICE_NAME = 'Auth';
+export const AUTHORIZATION_SERVICE_NAME = 'Authorization';

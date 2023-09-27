@@ -1,11 +1,12 @@
 syntax = "proto3";
 
-package Auth;
+package Authorization;
 
 service Authorization {
   rpc SignUp(RegisterDto) returns (UserAuthDto) {}
   rpc SignIn(LoginDto) returns (AuthToken) {}
   rpc Refresh(AuthToken) returns (AuthToken) {}
+  rpc hello(RegisterDto) returns (RegisterDto) {}
 }
 
 message RegisterDto {

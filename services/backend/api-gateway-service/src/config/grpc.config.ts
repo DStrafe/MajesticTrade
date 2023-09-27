@@ -7,7 +7,7 @@ export const grpcAuthOptions = {
   transport: Transport.GRPC,
   options: {
     url: '0.0.0.0:50051',
-    package: ['Auth'],
+    package: [AUTHORIZATION_SERVICE_NAME],
     protoPath: [
       resolve(__dirname, '../_proto/Auth/Auth.proto'),
     ],
