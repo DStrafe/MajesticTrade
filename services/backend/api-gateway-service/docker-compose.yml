@@ -1,14 +1,14 @@
 version: '3.9'
 services:
   redis:
-    container_name: redis
+    container_name: MajesticTradeRedis
     image: redis
     ports:
       - "6379:6379"
     volumes:
       - redis:/data
   postgres:
-    container_name: postgres
+    container_name: MajesticTradePostgresQL
     image: postgres:14.5-alpine
     restart: always
     environment:
@@ -20,7 +20,7 @@ services:
     volumes:
       - auth:/var/lib/postgresql/data_
   pgadmin:
-    container_name: pgadmin_container
+    container_name: MajesticTradePostgresAdmin
     image: dpage/pgadmin4:latest
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
