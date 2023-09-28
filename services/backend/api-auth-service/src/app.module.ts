@@ -11,7 +11,7 @@ import databaseConfig from './config/database.config';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: ['.env.dev'],
+      envFilePath: ['.env'],
       validate,
       load: [appConfig, databaseConfig],
     }),

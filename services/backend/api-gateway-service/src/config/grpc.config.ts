@@ -9,7 +9,7 @@ export const grpcAuthOptions = {
     url: '0.0.0.0:50051',
     package: [AUTH_PACKAGE_NAME],
     protoPath: [
-      resolve(__dirname, '../_proto/Auth/Auth.proto'),
+      resolve(__dirname, '../_proto/Auth/Auth._proto'),
     ],
     loader: {
       keepCase: true,

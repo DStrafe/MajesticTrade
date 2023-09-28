@@ -14,7 +14,7 @@ async function bootstrap() {
         url: '0.0.0.0:50051',
         package: [AUTH_PACKAGE_NAME], // AUTHORIZATION_SERVICE_NAME
         protoPath: [
-          join(__dirname, '_proto/Auth/Auth.proto'),
+          join(__dirname, '_proto/Auth/Auth._proto'),
         ],
         loader: {
           keepCase: true,
